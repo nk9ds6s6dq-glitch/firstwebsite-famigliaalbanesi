@@ -3,25 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌟 Il Pranzo di Natale dalla famiglia Albanesi 🌟</title>
+    <title>🎄 Pranzo di Natale da Babbo Natale - Famiglia Albanesi 🎅</title>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather:wght@400;700&display=swap">
     
     <style>
         /* Importazione dei font festivi */
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
         /* Variabili per i colori di Natale */
         :root {
-            --red-christmas: #B3000C; /* Rosso scuro e festivo */
-            --green-christmas: #004D00; /* Verde scuro abete */
-            --gold-christmas: #FFD700; /* Oro */
-            --white-snow: #F0F8FF; /* Bianco neve */
+            --red-christmas: #C62828; /* Rosso più brillante */
+            --green-christmas: #00695C; /* Verde smeraldo */
+            --gold-christmas: #FFC107; /* Oro brillante */
+            --white-snow: #E8F5E9; /* Bianco crema */
         }
 
-        /* Nevicata CSS */
+        /* Stile base del corpo */
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: var(--white-snow);
+            color: var(--green-christmas);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            overflow-x: hidden;
+            /* SFONDO: Babbo Natale, Renne, Albero */
+            background-image: url('https://images.unsplash.com/photo-1514781745423-f2b18991404c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            position: relative;
+        }
+
+        /* Overlay scuro per migliorare la leggibilità del testo sullo sfondo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); 
+            z-index: -1;
+        }
+
+        /* Effetto Nevicata più realistico */
         .snow-container {
             position: fixed;
             top: 0;
@@ -29,155 +57,298 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 999;
+            z-index: 1000;
         }
-
         .snowflake {
             position: absolute;
-            width: 5px;
-            height: 5px;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             animation: fall linear infinite;
         }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-        /* Generiamo fiocchi di neve usando pseudo-elementi (semplificato) */
-        .snow-container::before, .snow-container::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(white 1px, transparent 0);
-            background-size: 15px 15px;
-            animation: snow-movement 15s linear infinite;
-        }
-
-        .snow-container::after {
-            background-size: 20px 20px;
-            animation: snow-movement 25s linear infinite reverse;
-            opacity: 0.6;
-        }
-
-        @keyframes snow-movement {
-            0% { background-position: 0 0; }
-            100% { background-position: 500px 500px; }
-        }
-
-        /* Stile base */
-        body {
-            font-family: 'Playfair Display', serif;
-            background-color: var(--white-snow);
-            color: var(--green-christmas);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            overflow-x: hidden; /* Evita scroll orizzontale */
-        }
-
         /* Header/Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1543852786-1cf6624b9987') no-repeat center center/cover;
-            height: 40vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); 
+            height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: var(--white-snow);
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
             position: relative;
+            padding: 20px;
         }
 
         .hero-content h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
             color: var(--gold-christmas);
-            text-shadow: 2px 2px 4px var(--red-christmas);
-            margin-bottom: 0.5rem;
+            text-shadow: 3px 3px 6px var(--red-christmas);
+            margin-bottom: 1rem;
+            line-height: 1;
         }
-        
+
+        .hero-content p {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            margin-top: 0;
+            max-width: 800px;
+            color: var(--white-snow);
+        }
+
         /* Countdown Style */
         #countdown-timer {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: rgba(179, 0, 12, 0.8); /* Rosso semi-trasparente */
-            border-radius: 8px;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: var(--red-christmas);
+            border-radius: 10px;
             font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            color: var(--white-snow);
+            border: 3px solid var(--gold-christmas);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: sparkle 1s infinite alternate;
+        }
+
+        /* Musica di Sottofondo */
+        #music-toggle-btn {
+            background-color: var(--green-christmas);
             color: var(--white-snow);
             border: 2px solid var(--gold-christmas);
-            text-shadow: 1px 1px 2px #000;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        #music-toggle-btn:hover {
+            background-color: #00897B;
+            transform: scale(1.05);
         }
 
         /* Contenuto principale */
         .container {
             max-width: 1100px;
-            margin: 40px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
-        /* Modifiche Menu per Centramento */
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 4px solid var(--gold-christmas);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Titoli con brilla */
+        .card h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--red-christmas);
+            border-bottom: 3px solid var(--green-christmas);
+            padding-bottom: 15px;
+            margin-top: 0;
+            font-size: 2.8rem;
+            text-align: center;
+            text-shadow: 0 0 8px var(--gold-christmas);
+            animation: pulse 4s infinite alternate;
+        }
+
+        /* Sezione Menu */
         .menu-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            /* Nuova regola per centrare gli elementi quando sono dispari */
-            justify-content: center; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            padding-top: 20px;
         }
         
-        /* Regola specifica per l'ultima riga se non è piena */
         .menu-list > .menu-item {
-            /* Assicura che ogni elemento possa centarsi nella sua cella se necessario */
-            margin: 0 auto; 
-            width: 100%; /* Forza a usare lo spazio del minmax */
+            margin: 0 auto;
+            width: 100%;
+            max-width: 350px;
         }
         
-        /* Sezione menu */
         .menu-item {
-            padding: 15px;
-            border-left: 5px solid var(--red-christmas);
-            background-color: #FFF9E9;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: left; /* Riporta l'allineamento a sinistra dopo aver rimosso <center> */
+            padding: 20px;
+            border: 2px solid var(--green-christmas);
+            background-color: var(--white-snow);
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-item::before {
+            content: '🌲';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 2rem;
+            color: var(--gold-christmas);
+            opacity: 0.3;
+            transform: rotate(-20deg);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), 0 0 20px var(--gold-christmas);
+            background-color: #fcfcfc;
+        }
+
+        .menu-item h3, .menu-item h4 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--red-christmas);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        .menu-item p {
+            font-family: 'Merriweather', serif;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        /* Icona Piatto Speciale */
+        .special-dish {
+            color: var(--gold-christmas);
+            font-size: 1.4rem;
+            margin-left: 8px;
+            vertical-align: middle;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         
         /* Stile per la portata ATTIVA */
         .active-course {
-            background-color: var(--red-christmas);
+            background-color: var(--red-christmas) !important;
             color: var(--white-snow) !important;
             border-color: var(--gold-christmas) !important;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
         }
 
-        /* Pulsante Festivo (nessuna modifica) */
+        .active-course h3, .active-course h4, .active-course p, .active-course .special-dish {
+            color: var(--white-snow) !important;
+        }
+
+        /* Pulsante Festivo */
         .festive-button {
             background-color: var(--green-christmas);
             color: var(--white-snow);
             border: 3px solid var(--gold-christmas);
-            padding: 10px 20px;
-            margin-top: 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            margin-top: 30px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
             display: block;
-            width: 100%;
+            width: 80%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
         }
 
-        /* Stili per le icone (nessuna modifica) */
+        /* Sezione Ospiti: Funzione Indovina l'Ospite */
+        .guest-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            padding-top: 20px;
+        }
+        .guest-item {
+            cursor: pointer;
+            flex-basis: calc(33% - 25px);
+            min-width: 280px;
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed var(--red-christmas);
+            border-radius: 15px;
+            background-color: var(--white-snow);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .guest-item:hover {
+            background-color: #fcfcfc;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .guest-icon {
+            font-size: 3.5rem;
+            color: var(--green-christmas);
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .guest-item h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--red-christmas);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        .guest-item p {
+            font-family: 'Merriweather', serif;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .guest-details {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--gold-christmas);
+        }
+        .guest-details.show {
+            display: block;
+        }
+        .guest-item .visibility-icon {
+            font-size: 1.2rem;
+            vertical-align: middle;
+            margin-left: 5px;
+            color: var(--gold-christmas);
+        }
+
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--red-christmas);
+            color: var(--white-snow);
+            margin-top: 60px;
+            border-top: 8px solid var(--gold-christmas);
+            font-size: 1.1rem;
+            font-family: 'Dancing Script', cursive;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        /* Stili per le icone di Google Fonts (INVARIANTI) */
         .material-symbols-outlined {
           font-variation-settings:
           'FILL' 0,
           'wght' 400,
           'GRAD' 0,
           'opsz' 24;
+        }
+
+        /* Keyframes per la neve (INVARIANTI) */
+        @keyframes fall {
+            0% { transform: translateY(-20%) translateX(0%); opacity: 0; }
+            5% { opacity: 0.8; }
+            100% { transform: translateY(100vh) translateX(100px); opacity: 0; }
         }
     </style>
     </head>
@@ -186,11 +357,16 @@
 
     <header class="hero">
         <div class="hero-content">
-            <h1>🎅 Benvenuti al Nostro Pranzo di Natale dalla famiglia Albanesi! 🎁</h1>
-            <p>Che bello ritrovarci! Quest’anno festeggiamo con calore, buon cibo e tanta allegria in casa Albanesi.</p>
+            <h1>🎅 Benvenuti al Pranzo di Natale dalla famiglia Albanesi! 🎁</h1>
+            <p>Un'occasione speciale per ritrovarci, circondati dal calore delle feste e da deliziose prelibatezze. Quest'anno, la magia è servita in tavola!</p>
             <span class="material-symbols-outlined star-icon">star</span>
             
             <div id="countdown-timer">Caricamento countdown...</div>
+            <button id="music-toggle-btn">🎶 Avvia Musica di Natale</button>
+            <audio id="christmas-music" loop>
+                <source src="https://assets.mixkit.co/music/download/mixkit-winter-magic-1049.mp3" type="audio/mpeg">
+                Il tuo browser non supporta l'audio.
+            </audio>
         </div>
     </header>
 
@@ -209,27 +385,27 @@
                     <p>Affettati misti con contorno di giardiniera, pomodorini con tonno e insalata russa e insalata di mare.</p>
                 </div>
                 <div class="menu-item" id="primo">
-                    <h3>2. Primo alternativo</h3>
+                    <h3>2. Primo alternativo <span class="material-symbols-outlined special-dish" title="Ricetta dello Zio Gianmario">restaurant_menu</span></h3>
                     <p>Tagliatelle per tutti ma.... per la tradizione sugo di salsiccia e funghi raccolti dallo Zio Gianmario, invece per chi preferisce il mare conditi con gamberi e zucchine.</p>
                 </div>
                 <div class="menu-item" id="secondo">
-                    <h3>3. Un secondo classicone</h3>
+                    <h3>3. Un secondo classicone <span class="material-symbols-outlined special-dish" title="Offerto dalla Zia Rosanna e Nonna Tina">tapas</span></h3>
                     <p>Abbiamo una vasta scelta di sola carne, il polpettone offerto dalla zia Rosanna ma cucinato dalla mamma Sara, arrosto di vitello offerto e cucinato dalla nonna Tina. </p>
                 </div>
                 <div class="menu-item" id="contorni">
-                    <h3>4. Contorni dal palato delicato</h3>
+                    <h3>4. Contorni dal palato delicato <span class="material-symbols-outlined special-dish" title="Freschi e di stagione">menu_book</span></h3>
                     <p>Ad accompagnare i nostri secondi la cucina vi offre: cipolle caramellate, patate arrosto o lessate e verdure grigliate.</p>
                 </div>
                 <div class="menu-item" id="formaggi">
-                    <h3>5. Formaggi misti offerti dallo spaccio di Angelo Croce</h3>
-                    <p>Selezione di formaggi freschi e stagionati per i palati più esigenti.</p>
+                    <h3>5. Formaggi misti <span class="material-symbols-outlined special-dish" title="Dallo spaccio Angelo Croce">cheese</span></h3>
+                    <p>Selezione di formaggi freschi e stagionati offerti dallo spaccio di Angelo Croce.</p>
                 </div>
                 <div class="menu-item" id="dolce">
-                    <h3>6. Il dolce tradizionale</h3>
+                    <h3>6. Il dolce tradizionale <span class="material-symbols-outlined special-dish" title="Mascarpone fatto da Marco e Michele">cake</span></h3>
                     <p>Panettone offerto da qualcuno, Pandoro offerto dallo zio Mario con mascarpone DOC dello spaccio Angelo Croce fatto da Marco e Michele.</p>
                 </div>
                 <div class="menu-item" id="caffe">
-                    <h3>7. Conclusione alcolica e non </h3>
+                    <h3>7. Conclusione alcolica e non <span class="material-symbols-outlined special-dish" title="Elisir di lunga vita della Zia Cristina">liquor</span></h3>
                     <p>Caffè, amari, il famoso elisir di lunga vita, frutta secca e non offerta dalla zia Cristina.</p>
                 </div>
             </div>
@@ -237,34 +413,44 @@
         </section>
 
         <section id="ospiti" class="card">
-            <h2>👨‍👩‍👧‍👦 I Nostri Cari Ospiti</h2>
-            <p>L'elenco delle persone e famiglie che condividono con noi questo giorno speciale. La vostra presenza è il regalo più bello!</p>
+            <h2>👨‍👩‍👧‍👦 Indovina Chi Viene a Cena!</h2>
+            <p>Clicca sul nome di ciascun ospite per rivelare i dettagli! Un piccolo gioco per iniziare le feste con allegria.</p>
 
             <div class="guest-list">
-                <div class="guest-item">
+                <div class="guest-item" onclick="toggleDetails(this)">
                     <span class="material-symbols-outlined guest-icon">family_restroom</span>
-                    <h4>La Famiglia Betti Griffini</h4>
-                    <p>Provenienti da Secugnago, papà GianMario, mamma Cristina e il figlio Armando stiamo tranquilli perchè con loro ci saranno tante storie da raccontare!</p>
+                    <h4>La Famiglia Betti Griffini <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
+                    <div class="guest-details">
+                        <p>Provenienti da Secugnago, papà GianMario, mamma Cristina e il figlio Armando stiamo tranquilli perchè con loro ci saranno tante storie da raccontare!</p>
+                    </div>
                 </div>
-                <div class="guest-item">
+                <div class="guest-item" onclick="toggleDetails(this)">
                     <span class="material-symbols-outlined guest-icon">person</span>
-                    <h4>Zia Rosanna</h4>
-                    <p>Con lei il divertimento assicurato, ma non solo.... Anche un bicchiere di vino bianco è garantito.</p>
+                    <h4>Zia Rosanna <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
+                    <div class="guest-details">
+                        <p>Con lei il divertimento assicurato, ma non solo.... Anche un bicchiere di vino bianco è garantito.</p>
+                    </div>
                 </div>
-                <div class="guest-item">
+                <div class="guest-item" onclick="toggleDetails(this)">
                     <span class="material-symbols-outlined guest-icon">person</span>
-                    <h4>Miriam e Selma</h4>
-                    <p>Le principesse di Vittadone le ringraziamo per la loro presenza. Ma ragazze occhio allo Stalker Armando.</p>
+                    <h4>Miriam e Selma <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
+                    <div class="guest-details">
+                        <p>Le principesse di Vittadone le ringraziamo per la loro presenza. Ma ragazze occhio allo Stalker Armando.</p>
+                    </div>
                 </div>
-                <div class="guest-item">
+                <div class="guest-item" onclick="toggleDetails(this)">
                     <span class="material-symbols-outlined guest-icon">group</span>
-                    <h4>Nonna Tina e lo Zio Mario</h4>
-                    <p>La maestra della cucina insieme al RE del teatro, con loro due il gusto e il divertimento è assicurao !</p>
+                    <h4>Nonna Tina e lo Zio Mario <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
+                    <div class="guest-details">
+                        <p>La maestra della cucina insieme al RE del teatro, con loro due il gusto e il divertimento è assicurato !</p>
+                    </div>
                 </div>
-                <div class="guest-item">
+                <div class="guest-item" onclick="toggleDetails(this)">
                     <span class="material-symbols-outlined guest-icon">person</span>
-                    <h4>La Desy</h4>
-                    <p>La stella cometa che arriverà con un giorno di ritardo (come tutte le stelle si fanno desiderare) ma col cuore sarà sempre con me.</p>
+                    <h4>La Desy <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
+                    <div class="guest-details">
+                        <p>La stella cometa che arriverà con un giorno di ritardo (come tutte le stelle si fanno desiderare) ma col cuore sarà sempre con me.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -272,23 +458,21 @@
     </main>
 
     <footer class="footer">
-        <p>© 2025 Pranzo di Natale. Realizzato con Spirito Natalizio 🎁</p>
+        <p>© 2025 Pranzo di Natale. Famiglia Albanesi 🎁</p>
     </footer>
 
     <script>
-        // IMPOSTA QUI LA DATA E L'ORA DEL PRANZO DI NATALE (Anno, Mese-1, Giorno, Ora, Minuti, Secondi)
+        // *** 1. SETTAGGI CONTATORE (AGGIORNARE LA DATA!) ***
         // Esempio: 25 Dicembre 2025 alle 13:00
         const christmasDate = new Date("December 25, 2025 13:00:00").getTime();
         
         function setupCountdown() {
             const countdownElement = document.getElementById('countdown-timer');
 
-            // Aggiorna il contatore ogni secondo
             const countdownInterval = setInterval(function() {
                 const now = new Date().getTime();
                 const distance = christmasDate - now;
 
-                // Calcoli di tempo
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -302,17 +486,63 @@
                 }
             }, 1000);
         }
+        
+        // *** 2. LOGICA INDOVINA L'OSPITE ***
+        function toggleDetails(element) {
+            const details = element.querySelector('.guest-details');
+            details.classList.toggle('show');
+        }
+
+        // *** 3. LOGICA NEVICATA JS (per più controllo) ***
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; /* 2 to 5 seconds */
+            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.width = Math.random() * 5 + 3 + 'px'; /* 3 to 8px */
+            snowflake.style.height = snowflake.style.width;
+
+            document.querySelector('.snow-container').appendChild(snowflake);
+
+            // Rimuovi il fiocco di neve quando l'animazione è finita per evitare accumuli nel DOM
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+        setInterval(createSnowflake, 200); // Crea un nuovo fiocco ogni 200ms
 
         document.addEventListener('DOMContentLoaded', () => {
             setupCountdown(); // Avvia il contatore
 
-            // Array con gli ID delle portate nell'ordine corretto
+            // *** 4. LOGICA MUSICA ***
+            const musicButton = document.getElementById('music-toggle-btn');
+            const christmasMusic = document.getElementById('christmas-music');
+            let isPlaying = false;
+
+            musicButton.addEventListener('click', () => {
+                if (isPlaying) {
+                    christmasMusic.pause();
+                    musicButton.innerHTML = '🎶 Avvia Musica di Natale';
+                } else {
+                    christmasMusic.play().catch(e => {
+                        console.error("Autoplay bloccato:", e);
+                        alert("Il browser potrebbe aver bloccato l'autoplay. Clicca di nuovo per avviare la musica.");
+                    });
+                    musicButton.innerHTML = '⏸️ Pausa Musica';
+                }
+                isPlaying = !isPlaying;
+            });
+
+
+            // *** 5. LOGICA MENU ***
             const courseOrder = ['antipasto', 'primo', 'secondo', 'contorni', 'formaggi', 'dolce', 'caffe'];
             let currentCourseIndex = -1; 
 
             const nextCourseButton = document.getElementById('next-course-btn');
 
-            // Funzione per creare e riprodurre il suono della campanella (INVARIANTI)
+            // Funzione per creare e riprodurre il suono della campanella
             function playBellSound() {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioCtx.createOscillator();
@@ -330,7 +560,6 @@
                 oscillator.stop(audioCtx.currentTime + 1.0);
             }
 
-            // Funzione per aggiornare lo stato del menu
             function updateMenuStatus() {
                 document.querySelectorAll('.menu-item').forEach(item => {
                     item.classList.remove('active-course');
@@ -344,7 +573,7 @@
                         currentCourseElement.classList.add('active-course');
                     }
                     
-                    const courseTitle = currentCourseElement.querySelector('h3') ? currentCourseElement.querySelector('h3').textContent : currentCourseElement.querySelector('h4').textContent;
+                    const courseTitle = currentCourseElement.querySelector('h3, h4').textContent;
 
                     playBellSound();
                     
@@ -353,10 +582,10 @@
                     if (currentCourseIndex < courseOrder.length - 1) {
                         const nextCourseId = courseOrder[currentCourseIndex + 1];
                         const nextCourseElement = document.getElementById(nextCourseId);
-                        // Gestisce sia h3 che h4
+                        
                         let nextCourseTitle = 'Prossima Portata';
                         if (nextCourseElement) {
-                             nextCourseTitle = nextCourseElement.querySelector('h3') ? nextCourseElement.querySelector('h3').textContent : nextCourseElement.querySelector('h4').textContent;
+                             nextCourseTitle = nextCourseElement.querySelector('h3, h4').textContent;
                         }
                         
                         nextCourseButton.textContent = `Prossimo: ${nextCourseTitle}`;
