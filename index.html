@@ -46,7 +46,7 @@
             z-index: -1;
         }
 
-        /* Effetto Nevicata Realistica (Fiocchi AGGIORNATI) */
+        /* Effetto Nevicata Realistica */
         .snowflake {
             position: fixed; 
             font-size: 20px; 
@@ -65,9 +65,61 @@
 
         /* Overlay di Login con transizione */
         #login-overlay {
-            transition: opacity 0.5s ease-out; /* PERMETTE LO SFUMATO */
+            transition: opacity 0.5s ease-out; 
         }
         
+        /* HEADER: Applicazione Corsivo */
+        .hero-content h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 6rem;
+            color: var(--gold-christmas);
+            text-shadow: 4px 4px 8px var(--red-christmas), 0 0 20px var(--accent-light);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            /* CAMBIO APPLICATO QUI: */
+            font-style: italic; 
+        }
+
+        /* Titoli delle Card: Applicazione Corsivo */
+        .card h2 {
+            font-family: 'Great Vibes', cursive;
+            color: var(--red-christmas);
+            border-bottom: 3px dashed var(--green-christmas);
+            padding-bottom: 15px;
+            margin-top: 0;
+            font-size: 3.8rem;
+            text-align: center;
+            text-shadow: 1px 1px 0 var(--gold-christmas);
+            /* CAMBIO APPLICATO QUI: */
+            font-style: italic; 
+        }
+
+        /* Menu Item Headings: Applicazione Corsivo */
+        .menu-item h3, .menu-item h4 {
+            font-family: 'Great Vibes', cursive;
+            color: var(--red-christmas);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            /* CAMBIO APPLICATO QUI: */
+            font-style: italic; 
+        }
+
+        /* Guest Item Headings: Applicazione Corsivo */
+        .guest-item h4 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--red-christmas);
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* CAMBIO APPLICATO QUI: */
+            font-style: italic; 
+        }
+
+        /* Altro CSS (non toccato) */
+
         /* Header/Hero Section */
         .hero {
             height: 60vh;
@@ -80,15 +132,6 @@
             padding: 40px 20px;
             border-bottom: 8px solid var(--wood-dark);
             background-color: rgba(139, 0, 0, 0.1);
-        }
-
-        .hero-content h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 6rem;
-            color: var(--gold-christmas);
-            text-shadow: 4px 4px 8px var(--red-christmas), 0 0 20px var(--accent-light);
-            margin-bottom: 1rem;
-            line-height: 1.1;
         }
 
         .hero-content p {
@@ -135,18 +178,6 @@
             font-size: 1.1rem;
         }
 
-        /* Titoli delle Card */
-        .card h2 {
-            font-family: 'Great Vibes', cursive;
-            color: var(--red-christmas);
-            border-bottom: 3px dashed var(--green-christmas);
-            padding-bottom: 15px;
-            margin-top: 0;
-            font-size: 3.8rem;
-            text-align: center;
-            text-shadow: 1px 1px 0 var(--gold-christmas);
-        }
-
         /* Menu Item */
         .menu-list {
             display: grid;
@@ -162,13 +193,7 @@
             transition: all 0.3s ease-in-out;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        .menu-item h3, .menu-item h4 {
-            font-family: 'Great Vibes', cursive;
-            color: var(--red-christmas);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            line-height: 1.1;
-        }
+
         .active-course {
             background-color: var(--red-christmas) !important;
             color: var(--cream-bg) !important;
@@ -210,6 +235,7 @@
             gap: 20px;
             justify-content: center;
         }
+
         .guest-item {
             flex-basis: calc(33.333% - 25px);
             min-width: 250px;
@@ -229,22 +255,32 @@
             padding-top: 0;
         }
         .guest-details.show {
-            max-height: 200px; 
+            max-height: 200px;
             padding-top: 10px;
         }
         .guest-icon {
             font-size: 4rem;
             color: var(--green-christmas);
         }
-        .guest-item h4 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
-            color: var(--red-christmas);
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        /* Tasto Audio */
+        #audio-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2500;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--gold-christmas);
+            color: var(--accent-light);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
+        #audio-control:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
 
         /* Footer */
         .footer {
@@ -275,8 +311,17 @@
 </head>
 <body>
     
+    <div id="audio-control" onclick="toggleMusic()">
+        <span id="audio-icon" class="material-symbols-outlined">volume_off</span>
+    </div>
+
+    <audio id="christmas-music" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"> 
+        Il tuo browser non supporta l'elemento audio.
+    </audio>
+
     <div id="login-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--wood-dark); z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
-        <h1 style="font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--gold-christmas); margin-bottom: 20px;">Benvenuto al pranzo di Natale in casa Albanesi 🏡</h1>
+        <h1 style="font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--gold-christmas); margin-bottom: 20px; font-style: italic;">Benvenuto al pranzo di Natale in casa Albanesi 🏡</h1>
         <p style="color: var(--cream-bg); font-size: 1.2rem; max-width: 400px; margin-bottom: 30px;">
             Inserisci il tuo nome o **Parenti** per verificare il tuo invito e accedere alla lista.
         </p>
@@ -315,7 +360,7 @@
                 <p id="santa-message">Scopri l'augurio speciale nascosto per voi, inciso su una pergamena segreta. Clicca sul augurio per svelarlo!</p>
                 <button id="reveal-santa-msg-btn" class="festive-button">Rompi il Sigillo 💌</button>
                 <div id="santa-note" style="display: none; margin-top: 30px; padding: 25px; background-color: var(--wood-dark); border-radius: 10px; border: 2px solid var(--gold-christmas);">
-                    <h3 style="font-family: 'Great Vibes', cursive; color: var(--accent-light); font-size: 2.8rem; margin-top: 0;">Un Augurio dalla Famiglia Albanesi!</h3>
+                    <h3 style="font-family: 'Great Vibes', cursive; color: var(--accent-light); font-size: 2.8rem; margin-top: 0; font-style: italic;">Un Augurio dalla Famiglia Albanesi!</h3>
                     <p style="font-style: normal; color: var(--cream-bg);">"Benvenuti nella nostra Casa. In questo giorno sacro e speciale, mettiamo da parte ogni pensiero: l'unica regola è godersi il calore della nostra unione, la gioia delle nostre tradizioni e il piacere della tavola. Non preoccupatevi della dieta per un giorno! Nessuno vi guarda."</p>
                 </div>
             </section>
@@ -333,7 +378,7 @@
                     </div>
                     <div class="menu-item" id="secondo">
                         <h3>3. I Grandi Arrosti <span class="material-symbols-outlined special-dish" title="Zia Rosanna e Nonna Tina">tapas</span></h3>
-                        <p>Polpettone in brodo offerto dalla Zia Rosanna e cucinato dalla Mamma Sara e il classico Arrosto di Vitello  offerto e cucinato dalla Nonna Tina. La carne che fa il nostro Natale.</p>
+                        <p>Polpettone in brodo offerto dalla Zia Rosanna e cucinato dalla Mamma Sara e il classico Arrosto di Vitello offerto e cucinato dalla Nonna Tina. La carne che fa il nostro Natale.</p>
                     </div>
                     <div class="menu-item" id="contorni">
                         <h3>4. Contorni del Bosco <span class="material-symbols-outlined special-dish" title="Freschi e di stagione">menu_book</span></h3>
@@ -345,7 +390,7 @@
                     </div>
                     <div class="menu-item" id="dolce">
                         <h3>6. Il Momento del dolce (quello più atteso) <span class="material-symbols-outlined special-dish" title="Mascarpone di Marco e Michele">cake</span></h3>
-                        <p>Panettone offerto dalla Casa Albanesi, Pandoro  gentilmente offerto dallo Zio Mario e l'immancabile Mascarpone DOC, preparato con maestria da Marco e Michele.</p>
+                        <p>Panettone offerto dalla Casa Albanesi, Pandoro gentilmente offerto dallo Zio Mario e l'immancabile Mascarpone DOC, preparato con maestria da Marco e Michele.</p>
                     </div>
                     <div class="menu-item" id="caffe">
                         <h3>7. Amari e non <span class="material-symbols-outlined special-dish" title="Elisir di lunga vita della Zia Cristina"></span></h3>
@@ -450,6 +495,13 @@
                             <p>L'inventore di tutto ciò, futuro EREDE della casa, il più forta calciatore presente in tavola, anche con lui la risata è assicurata sperando di non trovarlo con la luna storta.</p>
                         </div>
                     </div>
+                    <div class="guest-item" onclick="toggleDetails(this)">
+                        <span class="material-symbols-outlined guest-icon">restaurant</span>
+                        <h4>Zia Rosanna <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
+                        <div class="guest-details">
+                            <p>L'esperta di polpettoni e colei che, come Marco, tiene tutto in ordine in casa. Il suo posto d'onore a Capotavola è assicurato per la sua maestria culinaria.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
             
@@ -491,7 +543,8 @@
                     Col cuore Marco, Sara, Michele.
                 </p>
             </section>
-            </main>
+
+        </main>
 
         <footer class="footer">
             <p>Con amore cibo e felicità in abbondanza, dalla Famiglia Albanesi. Auguriamo un Buon Natale 2025!</p>
@@ -499,26 +552,95 @@
 
     </div> 
     <script>
-        // *** INIZIO LOGICA ACCESSO ESCLUSIVO AGGIORNATA (CON DIFFERENZIAZIONE DI GENERE) ***
+        // Variabili globali per la navigazione del menu
+        let currentCourseIndex = -1; 
+        let menuItems = []; 
+        const nextCourseBtn = document.getElementById('next-course-btn');
+
+        // *** LOGICA CICLO MENU AGGIUNTA ***
+        function startMenuCycle() {
+            menuItems = Array.from(document.querySelectorAll('#menu-pranzo .menu-item'));
+            if (menuItems.length > 0) {
+                // Inizializza al primo elemento
+                currentCourseIndex = 0; 
+                highlightCourse(currentCourseIndex);
+                nextCourseBtn.textContent = `Servi Ora: ${menuItems[currentCourseIndex].querySelector('h3').textContent.split('. ')[1]} 🍽️`;
+            }
+        }
+
+        function highlightCourse(index) {
+            menuItems.forEach((item, i) => {
+                item.classList.remove('active-course');
+                // Scorri all'elemento evidenziato
+                if (i === index) {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+            if (index >= 0 && index < menuItems.length) {
+                menuItems[index].classList.add('active-course');
+            }
+        }
         
-        // Mappa gli invitati al loro genere per personalizzare l'accoglienza.
+        function highlightNextCourse() {
+            if (menuItems.length === 0) return;
+
+            // Rimuovi l'evidenziazione dalla portata precedente
+            if (currentCourseIndex >= 0 && currentCourseIndex < menuItems.length) {
+                menuItems[currentCourseIndex].classList.remove('active-course');
+            }
+
+            // Vai alla portata successiva
+            currentCourseIndex++;
+
+            if (currentCourseIndex < menuItems.length) {
+                // Ancora portate da servire
+                highlightCourse(currentCourseIndex);
+                
+                // Aggiorna il testo del pulsante
+                const courseName = menuItems[currentCourseIndex].querySelector('h3').textContent.split('. ')[1];
+                nextCourseBtn.textContent = `Servi Prossimo: ${courseName} 🥂`;
+                
+                if (currentCourseIndex === menuItems.length - 1) {
+                    nextCourseBtn.textContent = "Ultimo Servizio: Amari & Auguri! 🎉";
+                }
+
+            } else {
+                // Fine del menu del pranzo
+                currentCourseIndex = menuItems.length; // Per evitare ulteriori incrementi
+                
+                // Evidenzia tutta la sezione cena per un effetto "passiamo alla sera"
+                document.querySelector('#menu-cena').classList.add('active-course');
+                document.querySelector('#menu-pranzo').classList.remove('active-course');
+                
+                // Cambia il pulsante per indicare la fine
+                nextCourseBtn.textContent = "Fine Menu Pranzo! Passiamo alla Cena? 🌙";
+                nextCourseBtn.onclick = () => {
+                    document.querySelector('#menu-cena').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Disabilita il pulsante o cambia la funzione se non vuoi continuare
+                    nextCourseBtn.style.backgroundColor = 'var(--wood-dark)';
+                    nextCourseBtn.style.border = '3px solid var(--cream-bg)';
+                    nextCourseBtn.disabled = true;
+                };
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const nextCourseBtnElement = document.getElementById('next-course-btn');
+            if (nextCourseBtnElement) {
+                nextCourseBtnElement.addEventListener('click', highlightNextCourse);
+            }
+        });
+        
+        // *** LOGICA ACCESSO ESCLUSIVO ***
         const GUEST_GENDERS = {
-            'mario': 'M', 
-            'tina': 'F', 
-            'sara': 'F', 
-            'marco': 'M', 
-            'miriam': 'F', 
-            'selma': 'F', 
-            'desiree': 'F', 
-            'giamma': 'M', 
-            'cristina': 'F', 
-            'armando': 'M', 
-            'michele': 'M',
-            'parenti': 'P', // Aggiunto per accesso generico (P = Plurale)
-            'parente': 'P' // Aggiunto per accesso generico (P = Plurale)
+            'mario': 'M', 'tina': 'F', 'sara': 'F', 'marco': 'M', 'miriam': 'F', 
+            'selma': 'F', 'desiree': 'F', 'giamma': 'M', 'cristina': 'F', 
+            'armando': 'M', 'michele': 'M', 'rosanna': 'F',
+            'parenti': 'P', 'parente': 'P'
         };
-        // Estraiamo la lista dei nomi validi da questa mappa
         const INVITED_GUESTS = Object.keys(GUEST_GENDERS);
+
+        let isPlaying = false; // Stato iniziale della musica
 
         function attemptLogin() {
             const loginOverlay = document.getElementById('login-overlay');
@@ -532,32 +654,47 @@
             if (INVITED_GUESTS.includes(inputName)) {
                 // Accesso Riuscito!
                 
-                // 1. DETERMINAZIONE DEL GENERE E DELLA FORMA DI BENEDIZIONE
                 let welcomeWord;
                 let personalizedName;
                 const gender = GUEST_GENDERS[inputName];
 
                 if (inputName === 'parenti' || inputName === 'parente') {
-                    welcomeWord = 'Benvenuti'; // Forma plurale/generica
+                    welcomeWord = 'Benvenuti'; 
                     personalizedName = 'Cari Parenti';
                 } else {
-                    welcomeWord = (gender === 'F') ? 'Benvenuta' : 'Benvenuto';
                     personalizedName = inputName.charAt(0).toUpperCase() + inputName.slice(1);
+                    welcomeWord = (gender === 'F') ? 'Benvenuta' : 'Benvenuto';
                 }
                 
-                // 2. Transizione dell'Overlay
                 loginOverlay.style.opacity = 0;
                 
                 setTimeout(() => {
                     loginOverlay.style.display = 'none';
                     contentWrapper.style.display = 'block';
                     setupCountdown(); 
-                    startSnowfall(); 
+                    startFestiveAnimations(); 
+                    startMenuCycle(); 
+                    
+                    // Musica
+                    const music = document.getElementById('christmas-music');
+                    try {
+                        music.volume = 0.4; 
+                        music.play().then(() => {
+                            document.getElementById('audio-icon').textContent = 'volume_up';
+                            isPlaying = true;
+                        }).catch(error => {
+                            console.log("Autoplay bloccato. L'utente deve interagire.");
+                            document.getElementById('audio-icon').textContent = 'volume_off';
+                            isPlaying = false;
+                        });
+                    } catch(e) {
+                        console.log("Errore riproduzione audio.");
+                    }
+
                 }, 500); 
                 
                 errorMessage.style.display = 'none';
                 
-                // 3. AGGIORNA IL MESSAGGIO DI BENVENUTO con il genere corretto e la NUOVA FRASE
                 welcomeMessage.innerHTML = `${welcomeWord}, **${personalizedName}**! A Natale, tutte le strade conducono a casa. Entrate! Vi accoglie la magia della casa Albanesi, tra profumi di festa e l'abbraccio della famiglia.`;
                 
             } else {
@@ -580,12 +717,23 @@
                 }
             });
             inputField.focus(); 
+
+            // Funzione per rivelare l'augurio
+            document.getElementById('reveal-santa-msg-btn').addEventListener('click', function() {
+                const note = document.getElementById('santa-note');
+                const btn = this;
+                if (note.style.display === 'none') {
+                    note.style.display = 'block';
+                    btn.textContent = 'Nascondi Augurio 📜';
+                } else {
+                    note.style.display = 'none';
+                    btn.textContent = 'Rompi il Sigillo 💌';
+                }
+            });
         });
-        // *** FINE LOGICA ACCESSO ESCLUSIVO AGGIORNATA ***
 
 
-        // *** 3. LOGICA CONTATORE ***
-        // Anno fisso: 2025 (come da titolo)
+        // *** LOGICA CONTATORE ***
         const christmasDate = new Date("December 25, 2025 13:00:00").getTime();
         
         function setupCountdown() {
@@ -607,7 +755,7 @@
             }, 1000);
         }
         
-        // *** 4. LOGICA RIVELA DETTAGLI OSPITI ***
+        // *** LOGICA RIVELA DETTAGLI OSPITI ***
         function toggleDetails(element) {
             const details = element.querySelector('.guest-details');
             details.classList.toggle('show');
@@ -619,28 +767,23 @@
             }
         }
 
-        // *** 5. LOGICA NEVICATA REALISTICA (AGGIORNATA PER FIOCCHI VERI) ***
+        // *** LOGICA NEVICATA REALISTICA ***
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             
-            // Usiamo il carattere Unicode del fiocco di neve
             snowflake.textContent = '❄️';
             
-            // Posizione orizzontale casuale
             snowflake.style.left = Math.random() * 100 + 'vw';
-            // Durata e ritardo casuali per movimento non sincronizzato
-            const duration = Math.random() * 8 + 6; // Cade più lentamente
+            const duration = Math.random() * 8 + 6;
             snowflake.style.animationDuration = duration + 's'; 
             snowflake.style.animationDelay = Math.random() * 5 + 's';
             
-            // Dimensione casuale (1.2rem a 2.5rem)
             const size = Math.random() * 1.3 + 1.2;
             snowflake.style.fontSize = size + 'rem';
-            snowflake.style.opacity = Math.random() * 0.4 + 0.6; // Meno opacità per profondità
+            snowflake.style.opacity = Math.random() * 0.4 + 0.6;
             
-            // Direzione del vento casuale per l'oscillazione orizzontale
-            const wind = (Math.random() - 0.5) * 150; // tra -75 e 75 per più movimento
+            const wind = (Math.random() - 0.5) * 150;
             snowflake.style.setProperty('--wind-direction', wind); 
 
             document.querySelector('.snow-container').appendChild(snowflake);
@@ -650,34 +793,39 @@
             });
         }
         
-        function startSnowfall() {
-             // Frequenza di generazione ridotta per un effetto fitto (uno ogni 100ms)
-            setInterval(createSnowflake, 100); 
-            // Aggiungiamo un burst iniziale per riempire lo schermo velocemente
-            for(let i = 0; i < 50; i++) {
-                createSnowflake();
+        function startFestiveAnimations() {
+            // Crea 50 fiocchi di neve per un effetto denso
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createSnowflake, Math.random() * 5000); 
+            }
+            // Mantiene la nevicata continua
+            setInterval(createSnowflake, 300);
+        }
+
+        // *** LOGICA CONTROLLO AUDIO ***
+        function toggleMusic() {
+            const music = document.getElementById('christmas-music');
+            const icon = document.getElementById('audio-icon');
+
+            if (isPlaying) {
+                music.pause();
+                icon.textContent = 'volume_off';
+                isPlaying = false;
+            } else {
+                // Tenta di riprodurre, se bloccato, l'utente ha interagito.
+                music.play().then(() => {
+                    icon.textContent = 'volume_up';
+                    isPlaying = true;
+                }).catch(error => {
+                    console.log("Riproduzione fallita, problema del browser o del file.");
+                    icon.textContent = 'volume_off';
+                    isPlaying = false;
+                });
             }
         }
-        
-        // *** 6. LOGICA MESSAGGIO BABBO NATALE ***
-        const revealButton = document.getElementById('reveal-santa-msg-btn');
-        const santaNote = document.getElementById('santa-note');
-
-        revealButton.addEventListener('click', () => {
-            if (santaNote.style.display === 'none' || santaNote.style.display === '') {
-                santaNote.style.display = 'block';
-                revealButton.textContent = 'Nascondi l\'Augurio 🙈';
-            } else {
-                santaNote.style.display = 'none';
-                revealButton.textContent = 'Rompi il Sigillo 💌';
-            }
-        });
     </script>
 </body>
 </html>
-
-
-
 
 
 
