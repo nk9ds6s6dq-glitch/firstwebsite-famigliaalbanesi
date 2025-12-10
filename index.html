@@ -278,10 +278,10 @@
     <div id="login-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--wood-dark); z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
         <h1 style="font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--gold-christmas); margin-bottom: 20px;">Benvenuto al pranzo di Natale in casa Albanesi 🏡</h1>
         <p style="color: var(--cream-bg); font-size: 1.2rem; max-width: 400px; margin-bottom: 30px;">
-            Inserisci il tuo nome per verificare il tuo invito e accedere alla lista.
+            Inserisci il tuo nome o **Parenti** per verificare il tuo invito e accedere alla lista.
         </p>
 
-        <input type="text" id="guest-name-input" placeholder="Il tuo Nome (es. 'Sara', 'Marco', 'Desirèe')" style="padding: 15px; font-size: 1.1rem; border: 3px solid var(--green-christmas); border-radius: 5px; width: 90%; max-width: 350px; margin-bottom: 20px; text-align: center; text-transform: capitalize;">
+        <input type="text" id="guest-name-input" placeholder="Il tuo Nome (es. 'Sara', 'Parenti')" style="padding: 15px; font-size: 1.1rem; border: 3px solid var(--green-christmas); border-radius: 5px; width: 90%; max-width: 350px; margin-bottom: 20px; text-align: center; text-transform: capitalize;">
         
         <button id="access-btn" class="festive-button" style="max-width: 350px;">
             Accedi all'Invito Segreto 🔑
@@ -345,7 +345,7 @@
                     </div>
                     <div class="menu-item" id="dolce">
                         <h3>6. Il Momento del dolce (quello più atteso) <span class="material-symbols-outlined special-dish" title="Mascarpone di Marco e Michele">cake</span></h3>
-                        <p>Panettone offerto dalla Casa Albanesi, Pandoro  gentilemente offerto dallo Zio Mario e l'immancabile Mascarpone DOC, preparato con maestria da Marco e Michele.</p>
+                        <p>Panettone offerto dalla Casa Albanesi, Pandoro  gentilmente offerto dallo Zio Mario e l'immancabile Mascarpone DOC, preparato con maestria da Marco e Michele.</p>
                     </div>
                     <div class="menu-item" id="caffe">
                         <h3>7. Amari e non <span class="material-symbols-outlined special-dish" title="Elisir di lunga vita della Zia Cristina"></span></h3>
@@ -474,6 +474,23 @@
                     </div>
                 </div>
             </section>
+
+            <section id="onore-parenti" class="card" style="border-color: var(--green-christmas); background-color: var(--accent-light);">
+                <h2 style="color: var(--green-christmas); border-bottom-color: var(--red-christmas);">💖 Un Pensiero per Tutti Voi</h2>
+                <p style="text-align: center; font-size: 1.2rem; font-weight: bold; color: var(--red-christmas);">
+                    Un affettuoso abbraccio e una menzione d'onore vanno al nostro carissimo
+                    <span style="color: var(--wood-dark);">Zio Paolo, Zia Barbara, Zio Roberto, Zia Laura</span> e a tutti i parenti Albanesi.
+                </p>
+                <blockquote style="border-left: 5px solid var(--gold-christmas); padding-left: 20px; margin: 30px 0; font-style: italic; color: var(--wood-dark);">
+                    <p>La porta di Casa Albanesi non si chiude mai. Che sia per un semplice caffè, un bicchiere di vino in compagnia, o un'improvvisata cena o pranzo: la nostra casa è il vostro rifugio, sempre aperto, pieno di affetto e calore.</p>
+                </blockquote>
+                <p style="text-align: right; font-size: 1.3rem; margin-top: 40px;">
+                    Con tantissimo amore e l'augurio di un **Buon Natale** sincero,
+                </p>
+                <p style="text-align: right; font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--red-christmas); line-height: 1;">
+                    La Vostra Famiglia Albanesi.
+                </p>
+            </section>
             </main>
 
         <footer class="footer">
@@ -496,7 +513,9 @@
             'giamma': 'M', 
             'cristina': 'F', 
             'armando': 'M', 
-            'michele': 'M'
+            'michele': 'M',
+            'parenti': 'P', // Aggiunto per accesso generico (P = Plurale)
+            'parente': 'P' // Aggiunto per accesso generico (P = Plurale)
         };
         // Estraiamo la lista dei nomi validi da questa mappa
         const INVITED_GUESTS = Object.keys(GUEST_GENDERS);
@@ -514,8 +533,17 @@
                 // Accesso Riuscito!
                 
                 // 1. DETERMINAZIONE DEL GENERE E DELLA FORMA DI BENEDIZIONE
+                let welcomeWord;
+                let personalizedName;
                 const gender = GUEST_GENDERS[inputName];
-                const welcomeWord = (gender === 'F') ? 'Benvenuta' : 'Benvenuto';
+
+                if (inputName === 'parenti' || inputName === 'parente') {
+                    welcomeWord = 'Benvenuti'; // Forma plurale/generica
+                    personalizedName = 'Cari Parenti';
+                } else {
+                    welcomeWord = (gender === 'F') ? 'Benvenuta' : 'Benvenuto';
+                    personalizedName = inputName.charAt(0).toUpperCase() + inputName.slice(1);
+                }
                 
                 // 2. Transizione dell'Overlay
                 loginOverlay.style.opacity = 0;
@@ -529,10 +557,8 @@
                 
                 errorMessage.style.display = 'none';
                 
-                const capitalizedName = inputName.charAt(0).toUpperCase() + inputName.slice(1);
-                
                 // 3. AGGIORNA IL MESSAGGIO DI BENVENUTO con il genere corretto e la NUOVA FRASE
-                welcomeMessage.innerHTML = `${welcomeWord}, **${capitalizedName}**! A Natale, tutte le strade conducono a casa. Entrate! Vi accoglie la magia della casa Albanesi, tra profumi di festa e l'abbraccio della famiglia.`;
+                welcomeMessage.innerHTML = `${welcomeWord}, **${personalizedName}**! A Natale, tutte le strade conducono a casa. Entrate! Vi accoglie la magia della casa Albanesi, tra profumi di festa e l'abbraccio della famiglia.`;
                 
             } else {
                 // Accesso Fallito!
@@ -638,71 +664,14 @@
         const santaNote = document.getElementById('santa-note');
 
         revealButton.addEventListener('click', () => {
-            if (santaNote.style.display === 'none') {
+            if (santaNote.style.display === 'none' || santaNote.style.display === '') {
                 santaNote.style.display = 'block';
-                revealButton.textContent = 'Nascondi la Pergamena 📜';
-                santaNote.scrollIntoView({ behavior: 'smooth' });
+                revealButton.textContent = 'Nascondi l\'Augurio 🙈';
             } else {
                 santaNote.style.display = 'none';
                 revealButton.textContent = 'Rompi il Sigillo 💌';
             }
         });
-
-
-        // *** 7. LOGICA MENU (Solo per il Pranzo) ***
-        const courseOrder = ['antipasto', 'primo', 'secondo', 'contorni', 'formaggi', 'dolce', 'caffe'];
-        let currentCourseIndex = -1; 
-
-        const nextCourseButton = document.getElementById('next-course-btn');
-        
-        function playBellSound() {
-            // Genera un suono di campana semplice con l'API Web Audio
-            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(800, audioCtx.currentTime); 
-            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-            gainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 0.1); 
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.0); 
-
-            oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 1.0);
-        }
-
-        function updateMenuStatus() {
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.classList.remove('active-course');
-            });
-
-            currentCourseIndex++;
-
-            if (currentCourseIndex < courseOrder.length) {
-                const currentCourseId = courseOrder[currentCourseIndex];
-                const currentCourseElement = document.getElementById(currentCourseId);
-
-                if (currentCourseElement) {
-                    currentCourseElement.classList.add('active-course');
-                    currentCourseElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    playBellSound();
-                    
-                    const courseName = currentCourseElement.querySelector('h3').textContent.split('. ')[1];
-                    nextCourseButton.textContent = `Servi Prossima Portata: ${courseName} pronto! 🛎️`;
-                }
-
-            } else {
-                // Pranzo terminato
-                nextCourseButton.textContent = 'Digiuno Interrotto! Buon Natale! 🎉';
-                nextCourseButton.disabled = true;
-                nextCourseButton.style.backgroundColor = 'var(--green-christmas)'; 
-            }
-        }
-        
-        nextCourseButton.addEventListener('click', updateMenuStatus);
-
     </script>
 </body>
 </html>
