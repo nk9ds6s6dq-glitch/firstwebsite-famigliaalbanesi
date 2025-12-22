@@ -7,8 +7,101 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Georgia:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
+        .decorazione-angolo {
+  position: fixed;
+  top: 0;
+  font-size: 50px;
+  z-index: 1000;
+}
+.sinistra { left: 10px; }
+.destra { right: 10px; transform: scaleX(-1); } /* Specchia l'immagine */
+.bordo-ghirlanda {
+  border: 5px double #2e7d32; /* Verde foresta */
+  outline: 2px solid #d4af37; /* Oro */
+  outline-offset: -10px;
+  padding: 30px;
+  text-align: center;
+}
+        .bordo-candy-cane {
+  border: 10px solid;
+  /* Crea le strisce bianche e rosse */
+  border-image: repeating-linear-gradient(45deg, #d42426, #d42426 15px, white 15px, white 30px) 10;
+  padding: 20px;
+  background-color: white; /* Sfondo interno per far risaltare il bordo */
+}
+        .box-innevato {
+  position: relative;
+  border-top: 5px solid white;
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Crea le "gocce" di neve che scendono */
+.box-innevato::before {
+  content: "❄️❄️❄️❄️❄️";
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 15px;
+}
+        /* 1. IL CURSORE: Cambia la freccina in un fiocco di neve su tutto il sito */
+body {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size:24px'><text y='20'>❄️</text></svg>"), auto;
+}
+
+/* 2. IL FONT: Dice al sito di usare il carattere natalizio per i titoli */
+h1, h2, .titolo-natale {
+  font-family: 'Mountains of Christmas', cursive;
+  color: #d42426; /* Un bel rosso Natale */
+}
+
+/* 3. L'EFFETTO REGALO: Crea l'animazione dello scuotimento */
+.btn-regalo:hover {
+  animation: shake 0.5s infinite;
+  background-color: #d42426; /* Cambia colore quando ci passi sopra */
+  cursor: pointer;
+}
+
+/* Questa è la "ricetta" che spiega al computer come deve scuotersi il bottone */
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+        /* Il bottone base */
+.btn-regalo {
+  background-color: #2e7d32; /* Verde abete */
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+/* L'animazione di scuotimento al passaggio del mouse */
+.btn-regalo:hover {
+  animation: shake 0.5s infinite;
+  background-color: #d42426; /* Diventa rosso quando lo "scuoti" */
+}
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
         #login-overlay {
     cursor: pointer;
 }
@@ -429,8 +522,14 @@
     </style>
 </head>
 <body>
+    <div class="decorazione-angolo sinistra"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M765-40q-19 0-31.5-2T710-48L40-266l18-57 158 51 18-57-157-51 19-57 64 21v-164l219-94q8-4 15.5-5t16.5-1q34 0 55 29.5t10 64.5l-42 130 86-14q27-5 50.5 8t35.5 38l83 180 77 25-18 57-133-43-19 57 133 43q8 2 16.5 3.5T765-100q36 0 65.5-29.5T860-195q0-34-16.5-60T790-295l19-57q52 17 81.5 59t29.5 98q0 62-46.5 108.5T765-40ZM539-166l19-58-267-86-18 57 266 87Zm46-112-47-102-159 35 206 67Zm-305-99q-6-13-7.5-27.5T276-433l41-127-77 33v137l40 13Zm200-323q-33 0-56.5-23.5T400-780q0-33 23.5-56.5T480-860q33 0 56.5 23.5T560-780q0 33-23.5 56.5T480-700Z"/></svg></div>
+<div class="decorazione-angolo destra"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M765-40q-19 0-31.5-2T710-48L40-266l18-57 158 51 18-57-157-51 19-57 64 21v-164l219-94q8-4 15.5-5t16.5-1q34 0 55 29.5t10 64.5l-42 130 86-14q27-5 50.5 8t35.5 38l83 180 77 25-18 57-133-43-19 57 133 43q8 2 16.5 3.5T765-100q36 0 65.5-29.5T860-195q0-34-16.5-60T790-295l19-57q52 17 81.5 59t29.5 98q0 62-46.5 108.5T765-40ZM539-166l19-58-267-86-18 57 266 87Zm46-112-47-102-159 35 206 67Zm-305-99q-6-13-7.5-27.5T276-433l41-127-77 33v137l40 13Zm200-323q-33 0-56.5-23.5T400-780q0-33 23.5-56.5T480-860q33 0 56.5 23.5T560-780q0 33-23.5 56.5T480-700Z"/></svg></div>
+    <div class="bordo-candy-cane">
+  <h2 style="text-align: center;">Tanti Auguri a tutti voiiiii</h2>
+  <p>Come introduzione vogliamo darvi i nostri più sinceri auguri di Buon Natale sperando che vivrete una bella giornata in buona compagnia, ma sopratutto speriamo che andrete a casa con la pancia piena ma sopratutto soddisfatta.</p>
+</div>
 <div id="santa-wrapper">
-    <img id="santa-img" src="https://i.imgur.com/PlR48z5.png" alt="Babbo Natale">
+    <img id="santa-img" src="c:\Users\MicheleAlbanesi\Downloads\pngtree-santa-claus-on-sleigh-with-reindeer-png-image_14708620-removebg-preview.png" alt="Babbo Natale">
     <div class="santa-led led1"></div>
     <div class="santa-led led2"></div>
     <div class="santa-led led3"></div>
@@ -438,7 +537,7 @@
 </div>
 
 <audio id="christmas-music" loop>
-    <source src="https://files.catbox.moe/7qa471.mp3" type="audio/mpeg">
+    <source src="c:\Users\MicheleAlbanesi\Downloads\we-wish-you-a-merry-christmas-167774.mp3" type="audio/mpeg">
 </audio>
 
     
@@ -588,28 +687,28 @@
 
                 <div class="guest-list">
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">wine_bar</span>
+                        <span class="material-symbols-outlined guest-icon">family_restroom</span>
                         <h4> Zio Mario <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Il Maestro del palco, sempre pronto con una battuta, purtroppo tifa la viola. Controllore ufficiale dell'alcool in tavola.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">hotel</span>
+                        <span class="material-symbols-outlined guest-icon">wine_bar</span>
                         <h4> Nonna Tina <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>La Dea della cucina. Il suo Arrosto di Vitello è leggenda. Porta il cuore della tradizione a tavola, facendo ingrassare le altre persone tranne lei.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">chef_hat</span>
+                        <span class="material-symbols-outlined guest-icon">favorite</span>
                         <h4> Mamma Sara <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>La mente organizzatrice della disposizione in tavola e la co-star del Polpettone. Menzione d'onore anche per lei per il cibo che ci offre sempre.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">local_police</span>
+                        <span class="material-symbols-outlined guest-icon">local_fire_department</span>
                         <h4> Papà Marco <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Il capo della casa (attuale) e RE del mascarpone. La sua presenza garantisce buon umore e ordine in casa.</p>
@@ -630,45 +729,45 @@
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">chess_queen</span>
+                        <span class="material-symbols-outlined guest-icon">redeem</span>
                         <h4>Desirèe <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>La stella cometa: si fa attendere, ma è la più luminosa. Sempre con noi, anche a distanza, sempre nel cuore!</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">sentiment_very_satisfied</span>
+                        <span class="material-symbols-outlined guest-icon">restaurant</span>
                         <h4>Zio Giamma <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Gianmario, l'esperto di funghi, della risata ma sopratutto della patata. Tifa il Milan e va d'accordo con lo Zio Mario.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">mood</span>
+                        <span class="material-symbols-outlined guest-icon">local_drink</span>
                         <h4>Cristina <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
-                            <p> La zia Cristina sempre presente con il suo sorriso e la sua risata in queste feste non può mai mancare.</p>
+                            <p>Quest'anno Zia Cristina non porta la solita quantità industriale di frutta secca. Lo zoo ha già pranzato, e noi dobbiamo far spazio al mascarpone di Marco e Michele! Scherzi a parte sempre presente con il suo sorriso e la sua risata.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">lips</span>
+                        <span class="material-symbols-outlined guest-icon">diversity_1</span>
                         <h4>Armando <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Il giovane marziano. Porta storie fresche e ambgiue che forse è meglio non saperle ma il sorriso a tavola è assicurato (sperando sia sulla Terra). Attente Selma e Miriam è lui lo Stalker!</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">sports_soccer</span>
+                        <span class="material-symbols-outlined guest-icon">bakery_dining</span>
                         <h4>Michele <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>L'inventore di tutto ciò, futuro EREDE della casa, il più forta calciatore presente in tavola, anche con lui la risata è assicurata sperando di non trovarlo con la luna storta.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">wine_bar</span>
+                        <span class="material-symbols-outlined guest-icon">restaurant</span>
                         <h4>Zia Rosanna <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
-                            <p>Tiene tutto in ordine in casa. Il suo posto d'onore a Capotavola è assicurato perchè e sempre presente con un bicchiere di vino in mano infatti a volte il suo soprannome è alcool.</p>
+                            <p>L'esperta di polpettoni e colei che, come Marco, tiene tutto in ordine in casa. Il suo posto d'onore a Capotavola è assicurato per la sua maestria culinaria.</p>
                         </div>
                     </div>
                 </div>
@@ -1067,6 +1166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
+
 
 
 
