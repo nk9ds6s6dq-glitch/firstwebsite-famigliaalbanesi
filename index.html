@@ -9,54 +9,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Georgia:wght@400;700&display=swap">
     
     <style>
-        #access-btn {
-    background: linear-gradient(45deg, #ff0000, #c5ea0f, #ffae00);
-    background-size: 200% 200%;
-    color: #8b0000;
-    font-weight: bold;
-    border: 2px solid #fff;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-    animation: gold-glow 3s ease infinite;
-    transition: transform 0.2s;
-}
-
-@keyframes gold-glow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-#access-btn:hover {
-    transform: scale(1.1); /* Si ingrandisce quando ci passi sopra */
-}
-        body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border: 5px solid transparent; /* Spessore cornice */
-    border-image: linear-gradient(45deg, #ff0000, #00ff00, #ffff00, #ff0000) 1;
-    z-index: 99999;
-    pointer-events: none;
-    animation: border-glow 2s linear infinite;
-}
-
-@keyframes border-glow {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-}
-        body {
-    font-family: 'Georgia', serif;
-    background-color: var(--wood-dark);
-    /* ... altre tue impostazioni ... */
-    
-    /* AGGIUNGI QUESTA RIGA QUI SOTTO */
-    cursor: url('https://img.icons8.com/color/32/christmas-tree.png'), auto;
-}
-
-/* Facoltativo: Cambia il cursore anche quando passi sopra i bottoni o i link */
-a, button, .guest-item, #access-btn {
-    cursor: url('https://img.icons8.com/color/32/christmas-tree.png'), pointer !important;
-}
         #login-overlay {
     cursor: pointer;
 }
@@ -477,12 +429,8 @@ a, button, .guest-item, #access-btn {
     </style>
 </head>
 <body>
-    <div id="regalo-sezione" style="text-align:center; margin-top:50px; cursor:pointer;" onclick="apriRegalo()">
-    <div id="gift-icon" style="font-size: 50px;">🎁</div>
-    <p id="gift-text" style="color:gold;">Clicca sul regalo extra</p>
-</div>
 <div id="santa-wrapper">
-    <img id="santa-img" src="c:\Users\MicheleAlbanesi\Downloads\pngtree-santa-claus-on-sleigh-with-reindeer-png-image_14708620-removebg-preview.png" alt="Babbo Natale">
+    <img id="santa-img" src="https://i.imgur.com/PlR48z5.png" alt="Babbo Natale">
     <div class="santa-led led1"></div>
     <div class="santa-led led2"></div>
     <div class="santa-led led3"></div>
@@ -490,7 +438,7 @@ a, button, .guest-item, #access-btn {
 </div>
 
 <audio id="christmas-music" loop>
-    <source src="c:\Users\MicheleAlbanesi\Downloads\we-wish-you-a-merry-christmas-167774.mp3" type="audio/mpeg">
+    <source src="https://files.catbox.moe/i11vnb.mp3" type="audio/mpeg">
 </audio>
 
     
@@ -1116,56 +1064,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { once: true }); // Questo assicura che il comando parta solo al primo click
     }
 });
-document.addEventListener('touchstart', function(e) {
-    let touch = e.touches[0];
-    createMagic(touch.pageX, touch.pageY);
-});
-
-function createMagic(x, y) {
-    const emojis = ['✨', '❄️', '🎄', '🌟'];
-    const particle = document.createElement('div');
-    particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-    particle.style.position = 'absolute';
-    particle.style.left = x + 'px';
-    particle.style.top = y + 'px';
-    particle.style.fontSize = '20px';
-    particle.style.pointerEvents = 'none';
-    particle.style.zIndex = '100000';
-    particle.style.transition = 'all 1s ease-out';
-    
-    document.body.appendChild(particle);
-
-    setTimeout(() => {
-        particle.style.transform = `translateY(-50px) scale(2)`;
-        particle.style.opacity = '0';
-    }, 10);
-
-    setTimeout(() => { particle.remove(); }, 1000);
-}
-function apriRegalo() {
-    const icon = document.getElementById('gift-icon');
-    const text = document.getElementById('gift-text');
-    
-    icon.innerHTML = "🍾"; // Il regalo si trasforma in una bottiglia
-    icon.style.fontSize = "70px";
-    text.innerHTML = "Grazie alla Zia Rosanna e allo Zio Mario avete un bicchiere di vino bianco offerto da alzare !";
-    text.style.fontSize = "20px";
-    text.style.fontWeight = "bold";
-}
-// Muove gli elementi quando inclini il telefono
-window.addEventListener('deviceorientation', function(event) {
-    const x = event.beta;  // Inclinazione avanti/dietro
-    const y = event.gamma; // Inclinazione destra/sinistra
-
-    // Applichiamo il movimento a un contenitore (es. le foto o lo sfondo)
-    const sfondo = document.querySelector('.gallery'); 
-    if (sfondo) {
-        sfondo.style.transform = `rotateX(${x/5}deg) rotateY(${y/5}deg)`;
-    }
-});
     </script>
 </body>
 </html>
-
-
 
