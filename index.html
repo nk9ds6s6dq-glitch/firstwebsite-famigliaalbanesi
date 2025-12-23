@@ -9,6 +9,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Georgia:wght@400;700&display=swap">
     
     <style>
+        #access-btn {
+    /* Definiamo i colori del gradiente */
+    background: linear-gradient(270deg, #d42426, #ffd700, #2e7d32, #d42426);
+    background-size: 800% 800%; /* Serve per far scorrere il colore */
+    
+    /* L'animazione che cambia il colore */
+    animation: arcobalenoNatale 5s ease infinite;
+    
+    /* Altri stili per renderlo bello */
+    color: white;
+    border: 2px solid white;
+    padding: 15px 30px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    text-transform: uppercase;
+}
+
+/* La "magia" che sposta il gradiente */
+@keyframes arcobalenoNatale {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
         #login-overlay {
     cursor: pointer;
 }
@@ -509,7 +534,7 @@
                     display: none; /* Nascondi finché il login non lo rivela */
                 ">
                     <p style="color: var(--wood-dark);">
-                        <span style="font-size: 1.8rem; color: var(--green-christmas); display: block; margin-bottom: 10px;">Il tuo Titolo Onorario è:</span>
+                        <span style="font-size: 1.8rem; color: var(--green-christmas); display: block; margin-bottom: 10px;">Il tuo soprannome oggi è:</span>
                         <strong id="seat-title" style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--red-christmas); line-height: 1.2;">Caricamento...</strong>
                         <span id="seat-description" style="display: block; margin-top: 15px; font-style: italic;"></span>
                     </p>
@@ -538,15 +563,15 @@
                         <p>Affettati con gnocco fritto, giardiniera, pomodorini con tonno, insalata russa e insalata di mare offerti gentilmente dalla Famiglia Betti-Griffini. Un mosaico di sapori per iniziare con brio.</p>
                     </div>
                     <div class="menu-item" id="primo">
-                        <h3>2. Primo di Caccia e di Mare <span class="material-symbols-outlined special-dish" title="Ricetta dello Zio Gianmario">restaurant_menu</span></h3>
+                        <h3>2. Primo di Caccia e di Mare <span class="material-symbols-outlined special-dish" title="Ricetta dello Zio Gianmario"></span></h3>
                         <p>**Tradizione:** Tagliatelle con sugo di salsiccia e funghi raccolti dallo Zio Gianmario. **Alternativa:** Tagliatelle con gamberi e zucchine fresche.</p>
                     </div>
                     <div class="menu-item" id="secondo">
-                        <h3>3. I Grandi Arrosti <span class="material-symbols-outlined special-dish" title="Zia Rosanna e Nonna Tina">tapas</span></h3>
+                        <h3>3. I Grandi Arrosti <span class="material-symbols-outlined special-dish" title="Zia Rosanna e Nonna Tina"></span></h3>
                         <p>Polpettone in brodo offerto dalla Zia Rosanna e cucinato dalla Mamma Sara e il classico Arrosto di Vitello offerto e cucinato dalla Nonna Tina. La carne che fa il nostro Natale.</p>
                     </div>
                     <div class="menu-item" id="contorni">
-                        <h3>4. Contorni del Bosco <span class="material-symbols-outlined special-dish" title="Freschi e di stagione">menu_book</span></h3>
+                        <h3>4. Contorni del Bosco <span class="material-symbols-outlined special-dish" title="Freschi e di stagione"></span></h3>
                         <p>Cipolle caramellate, Patate arrosto o lessate e Verdure grigliate per un tocco di freschezza e misticanza.</p>
                     </div>
                     <div class="menu-item" id="formaggi">
@@ -554,8 +579,8 @@
                         <p>Assortimento di formaggi freschi e stagionati, offerti dalla Famiglia Albanesi, selezionati dello spaccio Angelo Croce.</p>
                     </div>
                     <div class="menu-item" id="dolce">
-                        <h3>6. Il Momento del dolce (quello più atteso) <span class="material-symbols-outlined special-dish" title="Mascarpone di Marco e Michele">cake</span></h3>
-                        <p>Panettone offerto dalla Casa Albanesi, Pandoro gentilmente offerto dallo Zio Mario e l'immancabile Mascarpone DOC, preparato con maestria da Marco e Michele.</p>
+                        <h3>6. Il Momento del dolce (quello più atteso) <span class="material-symbols-outlined special-dish" title="Mascarpone di Marco e Michele"></span></h3>
+                        <p>Panettone offerto dalla Casa Albanesi, Pandoro gentilmente offerto dallo Zio Mario e l'immancabile Mascarpone DOC, preparato con maestria da Marco e Michele (Marco coordina Michele esegue).</p>
                     </div>
                     <div class="menu-item" id="caffe">
                         <h3>7. Amari e non <span class="material-symbols-outlined special-dish" title="Elisir di lunga vita della Zia Cristina"></span></h3>
@@ -588,14 +613,14 @@
 
                 <div class="guest-list">
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">family_restroom</span>
+                        <span class="material-symbols-outlined guest-icon">wine_bar</span>
                         <h4> Zio Mario <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Il Maestro del palco, sempre pronto con una battuta, purtroppo tifa la viola. Controllore ufficiale dell'alcool in tavola.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">wine_bar</span>
+                        <span class="material-symbols-outlined guest-icon">bath_bedrock</span>
                         <h4> Nonna Tina <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>La Dea della cucina. Il suo Arrosto di Vitello è leggenda. Porta il cuore della tradizione a tavola, facendo ingrassare le altre persone tranne lei.</p>
@@ -605,11 +630,11 @@
                         <span class="material-symbols-outlined guest-icon">favorite</span>
                         <h4> Mamma Sara <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
-                            <p>La mente organizzatrice della disposizione in tavola e la co-star del Polpettone. Menzione d'onore anche per lei per il cibo che ci offre sempre.</p>
+                            <p>La mente organizzatrice della disposizione in tavola. Menzione d'onore anche per lei per il cibo che ci offre sempre.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">local_fire_department</span>
+                        <span class="material-symbols-outlined guest-icon">local_police</span>
                         <h4> Papà Marco <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Il capo della casa (attuale) e RE del mascarpone. La sua presenza garantisce buon umore e ordine in casa.</p>
@@ -637,35 +662,35 @@
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">restaurant</span>
+                        <span class="material-symbols-outlined guest-icon">family_star</span>
                         <h4>Zio Giamma <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Gianmario, l'esperto di funghi, della risata ma sopratutto della patata. Tifa il Milan e va d'accordo con lo Zio Mario.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">local_drink</span>
+                        <span class="material-symbols-outlined guest-icon">mood</span>
                         <h4>Cristina <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Quest'anno Zia Cristina non porta la solita quantità industriale di frutta secca. Lo zoo ha già pranzato, e noi dobbiamo far spazio al mascarpone di Marco e Michele! Scherzi a parte sempre presente con il suo sorriso e la sua risata.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">diversity_1</span>
+                        <span class="material-symbols-outlined guest-icon">lips</span>
                         <h4>Armando <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>Il giovane marziano. Porta storie fresche e ambgiue che forse è meglio non saperle ma il sorriso a tavola è assicurato (sperando sia sulla Terra). Attente Selma e Miriam è lui lo Stalker!</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">bakery_dining</span>
+                        <span class="material-symbols-outlined guest-icon">sports_soccer</span>
                         <h4>Michele <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>L'inventore di tutto ciò, futuro EREDE della casa, il più forta calciatore presente in tavola, anche con lui la risata è assicurata sperando di non trovarlo con la luna storta.</p>
                         </div>
                     </div>
                     <div class="guest-item" onclick="toggleDetails(this)">
-                        <span class="material-symbols-outlined guest-icon">restaurant</span>
+                        <span class="material-symbols-outlined guest-icon">wine_bar</span>
                         <h4>Zia Rosanna <span class="material-symbols-outlined visibility-icon">visibility</span></h4>
                         <div class="guest-details">
                             <p>L'esperta di polpettoni e colei che, come Marco, tiene tutto in ordine in casa. Il suo posto d'onore a Capotavola è assicurato per la sua maestria culinaria.</p>
@@ -1067,4 +1092,5 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </body>
 </html>
+
 
