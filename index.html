@@ -541,7 +541,7 @@ body, html {
     ">
         <h1 style="font-family: 'Great Vibes', cursive; font-size: 4rem; color: var(--gold-christmas); margin-bottom: 20px; font-style: italic;">Benvenuto al pranzo di Natale in casa Albanesi 🏡</h1>
         <p style="color: var(--cream-bg); font-size: 1.2rem; max-width: 400px; margin-bottom: 30px; text-shadow: 1px 1px 2px #000;">
-            Inserisci il tuo nome o **Parenti** per verificare il tuo invito e accedere alla lista.
+            Inserisci il tuo nome o **Parenti** o **Amici** per verificare il tuo invito e accedere alla lista.
         </p>
 
         <input type="text" id="guest-name-input" placeholder="Il tuo Nome (es. 'Giamma','Sara','Miriam', 'Parenti')" style="padding: 15px; font-size: 1.1rem; border: 3px solid var(--green-christmas); border-radius: 5px; width: 90%; max-width: 350px; margin-bottom: 20px; text-align: center; text-transform: capitalize;">
@@ -805,6 +805,7 @@ body, html {
             'michele': { title: 'L\'Erede e il  Calciatore più forte a tavola', description: 'Vicino a suo Zio Giamma, per discutere di calcio, e chissà magari caricare 10 euro alla ruota.' },
             'rosanna': { title: 'Zia Alcol ', description: 'Posto d\'onore per giudicare ogni bicchiere di vino che berrà. Vicino a Selma e Miriam che la fanno diventare matta.' },
             'parenti': { title: 'Gli Ospiti D\'Onore Collettivi', description: 'Troverete un posto a tavola tutto per voi, dove potrete sentirvi a casa e godervi il calore della Famiglia Albanesi.' }
+            'amici' : {title: 'Ringraziamenti sinceri', description: 'Vorrei ringraziare per chiuque sia entrato e legga questo messaggio, per me è molto importante un solo click.'}
         };
 
         // *** LOGICA CICLO MENU ***
@@ -885,7 +886,7 @@ body, html {
             'mario': 'M', 'tina': 'F', 'sara': 'F', 'marco': 'M', 'miriam': 'F', 
             'selma': 'F', 'desiree': 'F', 'giamma': 'M', 'cristina': 'F', 
             'armando': 'M', 'michele': 'M', 'rosanna': 'F',
-            'parenti': 'P', 'parente': 'P'
+            'parenti': 'P', 'parente': 'P', 'amici': 'M', 'amici': 'F'
         };
         const INVITED_GUESTS = Object.keys(GUEST_GENDERS);
 
@@ -1180,6 +1181,7 @@ const muri = [
     </script>
 </body>
 </html>
+
 
 
 
