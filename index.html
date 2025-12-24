@@ -9,6 +9,27 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Georgia:wght@400;700&display=swap">
     
     <style>
+        .scintilla {
+    position: absolute;
+    pointer-events: none; /* Fondamentale: il tocco deve passare attraverso la stella */
+    font-size: 20px;
+    color: gold;
+    z-index: 10000;
+    user-select: none;
+    animation: svanisci 1s ease-out forwards;
+}
+
+@keyframes svanisci {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* La stella sale verso l'alto e ruota mentre scompare */
+        transform: translate(var(--random-x), -50px) scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
         #access-btn {
     /* Definiamo i colori del gradiente */
     background: linear-gradient(270deg, #d42426, #ffd700, #2e7d32, #d42426);
@@ -1089,9 +1110,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { once: true }); // Questo assicura che il comando parta solo al primo click
     }
 });
+        document.addEventListener('mousemove', (e) => creaScintilla(e.pageX, e.pageY));
+document.addEventListener('touchmove', (e) => {
+    // Per i telefoni, prendiamo la posizione del primo tocco
+    creaScintilla(e.touches[0].pageX, e.touches[0].pageY);
+});
+
+function creaScintilla(x, y) {
+    const stella = document.createElement('span');
+    stella.classList.add('scintilla');
+    
+    // Puoi alternare tra diverse emoji natalizie
+    const icone = ['✨', '⭐', '❄️', '🌟'];
+    stella.innerText = icone[Math.floor(Math.random() * icone.length)];
+    
+    // Posizione iniziale
+    stella.style.left = x + 'px';
+    stella.style.top = y + 'px';
+    
+    // Generiamo un movimento orizzontale casuale per l'animazione
+    const randomX = (Math.random() - 0.5) * 100 + "px";
+    stella.style.setProperty('--random-x', randomX);
+
+    document.body.appendChild(stella);
+
+    // Rimuoviamo la stella dopo 1 secondo per non appesantire il sito
+    setTimeout(() => {
+        stella.remove();
+    }, 1000);
+}
     </script>
 </body>
 </html>
+
 
 
 
